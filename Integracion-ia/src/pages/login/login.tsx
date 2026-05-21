@@ -15,7 +15,7 @@ export function LoginDesing(){
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>  {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>  {//conceccion de base de datos hasta la linea 29
             e.preventDefault(); //
     
             const { error } = await supabase.auth.signInWithPassword({
@@ -30,9 +30,6 @@ export function LoginDesing(){
         }
     
         }
-
-
-
     return (
        <section className={style.section_login}> 
        <h2 className={style.icono}>▞</h2>
