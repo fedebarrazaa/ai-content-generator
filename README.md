@@ -3,7 +3,7 @@
 Una pequeña aplicación web que permite **interactual con la IA**.  
 Construida con **React, Typescript, CSS y Supabase**.
 
-## 🎯 Objetivo del juego
+## 🎯 Objetivo 
 
 El objetivo de la page es **brindar una experiencia con la Inteligencia Artificial**.  
 El usuario puede:
