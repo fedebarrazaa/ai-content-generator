@@ -32,7 +32,7 @@ export function LoginDesing(){
         }
     return (
        <section className={style.section_login}> 
-       <h2 className={style.icono}>▞</h2>
+       <h2 className={style.icono}>👾</h2>
         <h1> Piensa y hazlo mas rapido </h1>
         <div>
         <form className={style.form} onSubmit={handleSubmit}>
@@ -41,7 +41,7 @@ export function LoginDesing(){
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu email" 
+                placeholder="Email" 
                 className={style.section_email}></input> 
             </div>
             <div>
@@ -49,19 +49,19 @@ export function LoginDesing(){
                type="password" 
                value={password}
                onChange={(e) => setPassword(e.target.value)}
-               placeholder="........" 
+               placeholder="Contraseña" 
                className={style.section_password}></input>  
             </div>
             <div>
                <input 
                type="submit" 
                value="Ingresar" 
-               className={style.secion_enviar}></input> 
+               className={style.section_enviar}></input> 
             </div>
             <div>
             <Link 
             to="/register" 
-            className={style.secion_registro}>Crear cuenta</Link> {/*EL REACT ROUTER NO HACE FALTA PASAR UN ONECLICK, CON ESTE ESTA BIEN */}
+            className={style.section_registro}>Crear cuenta</Link> {/*EL REACT ROUTER NO HACE FALTA PASAR UN ONECLICK, CON ESTE ESTA BIEN */}
             </div>
 
           

@@ -18,15 +18,29 @@ ESTILOS DADOS EN THEME
 }
 
 .icono {
-    background-color: #1d1d1d;
-    border: 1px solid #2e2e2e;
     border-radius: 20px;
-    padding: 5px;
-    width: 90px;
-    height: 90px;
+    padding: 2px;
+    width: 200px;
+    height: 100px;
+    font-size: 80px;
     text-align: center;
-    font-size: 50px;
     margin-bottom: 10px;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Sube 10 píxeles */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.icono {
+    animation: flotar 3s ease-in-out infinite;
 }
 
 .form {
@@ -71,9 +85,11 @@ ESTILOS DADOS EN THEME
     font-size: 17px;
     font-weight: bold;
     font-family: "Inter", sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .secion_enviar:hover{
     cursor: pointer;
+    transform: translateY(-4px);
 }
 
 .secion_registro {

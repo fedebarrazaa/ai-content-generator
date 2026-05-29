@@ -35,8 +35,8 @@ export function RegisterDesing(){
 
     return (
         <section className={style.section_login}> 
-       <h2 className={style.icono}>▞</h2>
-        <h1> Empieza a usar Box IA </h1>
+       <h2 className={style.icono}>👾</h2>
+        <h1> Empieza a usar Troki IA </h1>
         <div>
         <form className={style.form} onSubmit={handleSubmit}>
             <div>
@@ -52,7 +52,7 @@ export function RegisterDesing(){
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu email" 
+                placeholder="Email" 
                 className={style.section_email}></input> 
             </div>
             <div>
@@ -60,7 +60,7 @@ export function RegisterDesing(){
                type="password" 
                value={password}
                onChange={(e) => setPassword(e.target.value)}
-               placeholder="........" 
+               placeholder="Contraseña" 
                className={style.section_password}></input>  
             </div>
             <div>

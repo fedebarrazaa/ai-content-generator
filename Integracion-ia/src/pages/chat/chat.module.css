@@ -105,5 +105,6 @@ li {
     text-align: center;
     font-family: "Inter", sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 
