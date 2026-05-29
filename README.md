@@ -1,4 +1,4 @@
-# Chat IA 
+# Troki IA 
 
 Una pequeña aplicación web que permite **interactual con la IA**.  
 Construida con **React, Typescript, CSS y Supabase**.
