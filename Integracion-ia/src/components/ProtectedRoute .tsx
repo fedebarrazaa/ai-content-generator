@@ -6,7 +6,6 @@ type ProtectedRouteProps = {
     redirectTo?: string
 }
 
-
 const ProtectedRoute = ({ isAllowed, redirectTo = "/" }: ProtectedRouteProps) => {
     if (!isAllowed) {
         return <Navigate to={redirectTo} replace/>;

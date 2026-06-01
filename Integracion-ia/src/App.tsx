@@ -9,8 +9,8 @@ import ProtectedRoute from "./components/ProtectedRoute ";
 
 
 function App() {
-  const [user, setUser] = useState<boolean | null>(null); 
 
+  const [user, setUser] = useState<boolean | null>(null); 
   useEffect(()=> {
     const checkSession = async() => {
       const { data } = await supabase.auth.getSession()
@@ -27,13 +27,11 @@ function App() {
     <BrowserRouter>
     {/*RUTAS*/}
     <Routes>
-      <Route path="/" element={<LoginDesing/>}/>
-      <Route path="register" element={<RegisterDesing/>}/>
-
-      <Route element={<ProtectedRoute isAllowed={!!user} />}>
-    <Route path="chat" element={<DesingChat/>} />
-</Route>
-
+    <Route path="/" element={<LoginDesing/>}/>
+    <Route path="register" element={<RegisterDesing/>}/>
+    <Route element={<ProtectedRoute isAllowed={!!user} />}>
+     <Route path="chat" element={<DesingChat/>} />
+    </Route>
     </Routes>
     </BrowserRouter>
   )
