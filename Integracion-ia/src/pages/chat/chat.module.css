@@ -25,6 +25,33 @@
     justify-content: center;
     flex-direction: column;
 }
+.desing_header {
+    padding: 10px;
+    margin: 0 auto;
+    background-color: transparent;
+    width: 80%;
+    font-family: "Inter", sans-serif;
+    display: flex;
+}
+
+.desing_header button {
+    background-color: #e7e7e7;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #2e2e2e;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.desing_header button:hover {
+    background-color: #dbdbdb;
+    transform: translateY(-4px);
+}
+
+
 
 ul {
     padding: 5px;
@@ -106,5 +133,10 @@ li {
     font-family: "Inter", sans-serif;
     font-weight: bold;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.desing_button:hover {
+    background-color: #dbdbdb;
+    transform: translateY(-4px);
+}

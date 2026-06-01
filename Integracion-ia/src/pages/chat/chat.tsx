@@ -1,21 +1,15 @@
 import style from './chat.module.css'; //importo el css
 import { useState } from 'react'; //import useState para poder usarlo en la linea 8
 import React from 'react';
-
-
+import { supabase } from '../../lib/supabase';
+import { useNavigate } from 'react-router-dom';
 
 
 export function DesingChat(){
-    //SOLO PARA QUE APAREZCA EN PANTALLA, DESPUES BORRAR
-    //  const [messages, setMessages] = useState([
-    //     {role:'user', content:'Hola chat ¿me queres ayudar?'},
-    //    {role:'ia', content:'¡Hola! ¿en que pudo ayudarte?'}
-    //]);
-    
     const [messages, setMessages] = useState<{role: string, content: string}[]>([])
-
     //GUARDAR LOS DATOS DEL INPUT
     const [input, setInput] = useState(''); 
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,7 +19,7 @@ export function DesingChat(){
     setMessages([...messages, userMessage])
     setInput('')
 
-    const response = await fetch(
+    const response = await fetch(    //CLAUDE IA 
         'https://vgsowczrmcknqatvzvtd.supabase.co/functions/v1/chat',
         {
             method: 'POST',
@@ -43,9 +37,29 @@ export function DesingChat(){
     setMessages(prev => [...prev, { role: 'ia', content: data.content }])
 }
 
+
+    //BOTON PARA CERRAR SESION Y LOGICA 
+    const handleLogout = async () => {
+        const {error} = await supabase.auth.signOut({})//va vacio
+
+        if (error) {
+            console.log('error: salir')
+        } else {
+            navigate('/')
+        }
+    }
+
+
     return(
         <section 
         className={style.desing_section}>  
+        <header
+        className={style.desing_header}>
+            <button 
+            type='button'
+            onClick={handleLogout}
+            >Salir</button>
+        </header>
         <div 
         className={style.desing_mensaje}> {/*ESTE DIV ES EL AREA DEL MENSAJE, DONDE RESPONDE LA IA Y YO*/}
         <ul> 
@@ -72,7 +86,6 @@ export function DesingChat(){
             <button 
             type='submit'
             className={style.desing_button}>↑</button>
-
         </div>
         </form>
         </section>
