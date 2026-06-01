@@ -7,18 +7,41 @@ import React from 'react';
 
 export function DesingChat(){
     //SOLO PARA QUE APAREZCA EN PANTALLA, DESPUES BORRAR
-    const [messages, setMessages] = useState([
-        {role:'user', content:'Hola chat ¿me queres ayudar?'},
-        {role:'ia', content:'¡Hola! ¿en que pudo ayudarte?'}
-    ]);
+    //  const [messages, setMessages] = useState([
+    //     {role:'user', content:'Hola chat ¿me queres ayudar?'},
+    //    {role:'ia', content:'¡Hola! ¿en que pudo ayudarte?'}
+    //]);
+    
+    const [messages, setMessages] = useState<{role: string, content: string}[]>([])
+
     //GUARDAR LOS DATOS DEL INPUT
     const [input, setInput] = useState(''); 
 
-    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) =>  {//conceccion de base de datos hasta la linea 29
-                e.preventDefault();
-                setMessages([...messages, { role: 'user', content: input }]);
-                setInput('')//se agregega esta linea para limpiar el input
-            }
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!input.trim()) return
+
+    const userMessage = { role: 'user', content: input }
+    setMessages([...messages, userMessage])
+    setInput('')
+
+    const response = await fetch(
+        'https://vgsowczrmcknqatvzvtd.supabase.co/functions/v1/chat',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                messages: [...messages, userMessage].map(m => ({
+                    role: m.role === 'ia' ? 'assistant' : m.role,
+                    content: m.content
+                }))
+            })
+        }
+    )
+
+    const data = await response.json()
+    setMessages(prev => [...prev, { role: 'ia', content: data.content }])
+}
 
     return(
         <section 
