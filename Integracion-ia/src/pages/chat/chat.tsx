@@ -3,6 +3,7 @@ import { useState } from 'react'; //import useState para poder usarlo en la line
 import React from 'react';
 import { supabase } from '../../lib/supabase';
 import { useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 
 export function DesingChat(){
@@ -48,6 +49,7 @@ export function DesingChat(){
             navigate('/')
         }
     }
+    
 
 
     return(
@@ -65,7 +67,7 @@ export function DesingChat(){
         <ul> 
            {messages.map((textos, index) => ( //Llamo a text, y despues uso textos.content para mostrar
         <li key={index} className={textos.role === 'user' ? style.mensaje_user : style.mensaje_ia}>
-          {textos.content}
+          <ReactMarkdown>{textos.content}</ReactMarkdown>
         </li>
       ))}
         </ul>
