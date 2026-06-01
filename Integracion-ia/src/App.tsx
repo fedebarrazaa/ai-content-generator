@@ -11,6 +11,8 @@ import ProtectedRoute from "./components/ProtectedRoute ";
 function App() {
 
   const [user, setUser] = useState<boolean | null>(null); 
+  const [loading, setLoading] = useState(true);
+
   useEffect(()=> {
     const checkSession = async() => {
       const { data } = await supabase.auth.getSession()
@@ -19,9 +21,11 @@ function App() {
               } else {
                   setUser(false)
               }
+              setLoading(false)
     }
     checkSession()
   },[])
+  if (loading) return null
 
   return (
     <BrowserRouter>
